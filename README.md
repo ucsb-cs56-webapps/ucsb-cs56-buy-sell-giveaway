@@ -2,10 +2,19 @@
 
 # Fall 2018
 
-Zain - ghesebull
+- Zain - ghesebull
 
 
-Zach Holoien - zholoien
+Zach - zholoien
 
 
-Yinon Rousso - yinonrousso
+Yinon - yinonrousso
+
+
+Rami - ramipinto
+
+
+Juan - juangonzalez20
+
+
+Derek - derektkbang
