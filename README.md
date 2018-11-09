@@ -5,16 +5,16 @@
 - Zain - ghesebull
 
 
-Zach - zholoien
+- Zach - zholoien
 
 
-Yinon - yinonrousso
+- Yinon - yinonrousso
 
 
-Rami - ramipinto
+- Rami - ramipinto
 
 
-Juan - juangonzalez20
+- Juan - juangonzalez20
 
 
-Derek - derektkbang
+- Derek - derektkbang
