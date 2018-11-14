@@ -43,7 +43,7 @@
 		<jdkVersion>1.8</jdkVersion>
 		<!-- Use your own application name -->
 		<!-- at Heroku CLI, use heroku apps to list, or use Heroku Dashboard -->
-		<appName>cs56-f18-juangonzalez20-lab06</appName> 
+		<appName>buy-sell-giveaway</appName> 
 		<processTypes>
 		  <!-- Tell Heroku how to launch your application -->
 		  <!-- You might have to remove the ./ in front   -->
