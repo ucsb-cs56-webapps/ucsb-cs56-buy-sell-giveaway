@@ -1,7 +1,6 @@
 #emacs
 *~
 
-<<<<<<< HEAD
 target
 # Compiled class file
 *.class
@@ -26,7 +25,3 @@ target
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-=======
-#build files
-target
->>>>>>> 12a351c23eeaba404298ea7becc73e0fa64563ac
