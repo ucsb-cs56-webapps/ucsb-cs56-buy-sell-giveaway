@@ -1,0 +1,19 @@
+.grid-container {
+	display: grid;
+	grid-gap: 15px;
+}
+
+/*Title*/
+.grid-item h2 {
+
+}
+
+/*Description*/
+* .grid-item h4 {
+
+}
+
+/*Contact*/
+.grid-item h3 {
+	color: blue;
+}
