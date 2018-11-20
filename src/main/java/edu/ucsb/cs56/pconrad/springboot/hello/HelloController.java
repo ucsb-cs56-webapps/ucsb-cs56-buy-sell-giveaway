@@ -16,8 +16,8 @@ public class HelloController {
 		return "index";
 	}
 	*/
-	@RequestMapping("/")
-	public ModelAndView index() {
+    @RequestMapping("/")
+    public ModelAndView index() {
 		ArrayList<Posting> postings = new ArrayList<Posting>();
 		postings.add(new Posting("What a title!", "Great description!", "Number: 555-555-5555\nEmail: fake@email.com"));
 		postings.add(new Posting("What a title 2!", "Great description 2!", "Number: 444-555-5555\nEmail: fake@email.com"));
@@ -27,54 +27,13 @@ public class HelloController {
 
 		Map<String, Object> params = new HashMap<>();
 		params.put("postings", postings);
-
+		
 		return new ModelAndView("index", params);
 	}
 
-
-	@RequestMapping("/search")
-	public String search() {
-		return "search";
-	}
-
-	@RequestMapping("/sell")
-	public String sell() {
-		return "sell";
-	}
-
-	@RequestMapping("/free")
-	public String free(){
-		return"free";
-	}
-
-	@RequestMapping("/textbook")
-	public String textbook(){
-		return"textbook";
-	}
-
-	@RequestMapping("/recreation")
-	public String recreation(){
-		return "recreation";
-	}
-
-	@RequestMapping("/transportation")
-	public String transportation(){
-		return("transportation");
-	}
-
-	@RequestMapping("/supplies")
-	public String supplies(){
-		return("supplies");
-	}
-
-	@RequestMapping("/all")
-	public String all(){
-		return("all");
-	}
-
-	@RequestMapping("/other")
-	public String other() {
-		return("other");
-	}
+    @RequestMapping("/new_post")
+    public String new_post(){
+	return"new_post";
+    }
 
 }
