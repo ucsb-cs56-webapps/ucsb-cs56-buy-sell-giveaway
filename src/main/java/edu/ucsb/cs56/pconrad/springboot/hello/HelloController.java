@@ -4,6 +4,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import edu.ucsb.cs56.pconrad.springboot.hello.Posting;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
@@ -31,9 +34,11 @@ public class HelloController {
 		return new ModelAndView("index", params);
 	}
 
-    @RequestMapping("/new_post")
-    public String new_post(){
+    @GetMapping("/new_post")
+    public String new_post_form(Model model, @RequestParam(value="title",required=false,defaultValue="noTitle") String title,
+				@RequestParam(value="desc",required=false,defaultValue="noDesc") String desc,
+				@RequestParam(value="contact",required=false,defaultValue="noContact") String contact){
+	model.addAttribute("new_post", new Posting(title,desc,contact));
 	return"new_post";
     }
-
 }

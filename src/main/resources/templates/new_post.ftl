@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html>
  <head>
-   <title>Free</title>
+   <title>New Post</title>
    <#include "head.ftl" />
  </head>
  <body>
    <#include "navbar.ftl" />
-   <h1>Make a Post</h1>
-  <p>This page would be where a user can make a post</p>
+   <h1>Make A New Post</h1>
+   <form action="/new_post" method "get">
+     <p>Title: <input type="text" name="title"></p>
+     <p>Description: <input type="text" name="desc"></p>
+     <p>Contact Info: <input type="text" name="contact"></p>
+     <p>
+       <input type="submit" value="Submit">
+       <input type="reset" value="Reset">
+     </p>
+   </form>
  </body>
 </html>
 
