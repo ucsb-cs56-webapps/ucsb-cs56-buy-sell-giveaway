@@ -7,7 +7,7 @@ public class PostVerifier{
        @param post The post that needs verification.
        @return true if post is valid and can be added to database, false if otherwise.
     */
-    public boolean isValid(Posting post){
+    public static boolean isValid(Posting post){
 	//Check title
 	if(post.getTitle().isEmpty()){
 	    return false;

@@ -19,13 +19,15 @@ public class HelloController {
 		return "index";
 	}
 	*/
+    ArrayList<Posting> postings = new ArrayList<Posting>();
+    
     @RequestMapping("/")
     public ModelAndView index() {
-		ArrayList<Posting> postings = new ArrayList<Posting>();
+	/*ArrayList<Posting> postings = new ArrayList<Posting>();
 		postings.add(new Posting("What a title!", "Great description!", "Number: 555-555-5555\nEmail: fake@email.com"));
 		postings.add(new Posting("What a title 2!", "Great description 2!", "Number: 444-555-5555\nEmail: fake@email.com"));
 		postings.add(new Posting("What a title 3!", "Great description 3!", "Number: 333-555-5555\nEmail: fake@email.com"));
-
+	*/
 		System.out.println(postings);
 
 		Map<String, Object> params = new HashMap<>();
@@ -35,10 +37,14 @@ public class HelloController {
 	}
 
     @GetMapping("/new_post")
-    public String new_post_form(Model model, @RequestParam(value="title",required=false,defaultValue="noTitle") String title,
-				@RequestParam(value="desc",required=false,defaultValue="noDesc") String desc,
-				@RequestParam(value="contact",required=false,defaultValue="noContact") String contact){
-	model.addAttribute("new_post", new Posting(title,desc,contact));
+    public String new_post_form(Model model, @RequestParam(value="title",required=true,defaultValue="") String title,
+				@RequestParam(value="desc",required=true,defaultValue="") String desc,
+				@RequestParam(value="contact",required=true,defaultValue="") String contact){
+	Posting newPost = new Posting(title,desc,contact);
+	    if(PostVerifier.isValid(newPost)){
+		postings.add(newPost);
+	    }
+	//model.addAttribute("new_post", new Posting(title,desc,contact));
 	return"new_post";
     }
 }
