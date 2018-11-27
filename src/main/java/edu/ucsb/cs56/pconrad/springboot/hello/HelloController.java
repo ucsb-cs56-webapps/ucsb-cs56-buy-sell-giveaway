@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import edu.ucsb.cs56.pconrad.springboot.hello.Posting;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.ui.Model;
 import java.util.HashMap;
@@ -19,6 +18,8 @@ public class HelloController {
 		return "index";
 	}
 	*/
+
+   
     ArrayList<Posting> postings = new ArrayList<Posting>();
     
     @RequestMapping("/")
@@ -36,15 +37,21 @@ public class HelloController {
 		return new ModelAndView("index", params);
 	}
 
-    @GetMapping("/new_post")
+    //Info on @RequestParam: http://zetcode.com/springboot/requestparam/
+    @RequestMapping("/new_post")
     public String new_post_form(Model model, @RequestParam(value="title",required=true,defaultValue="") String title,
 				@RequestParam(value="desc",required=true,defaultValue="") String desc,
 				@RequestParam(value="contact",required=true,defaultValue="") String contact){
 	Posting newPost = new Posting(title,desc,contact);
 	    if(PostVerifier.isValid(newPost)){
 		postings.add(newPost);
+		//Found how to redirect on this article: https://o7planning.org/en/11547/spring-boot-and-freemarker-tutorial
+		return "redirect:/";
 	    }
-	//model.addAttribute("new_post", new Posting(title,desc,contact));
-	return"new_post";
+	    //Don't know if I need the following line?
+	    //model.addAttribute("new_post", new Posting(title,desc,contact));
+
+	    //Bad post
+	    return "new_post";
     }
 }
