@@ -11,8 +11,9 @@
    <div style="margin-left: 15px">
      <form action="/new_post" method "get ">
        <p>Title: <input type="text" name="title"></p>
-       <p>Description: <input type="text" name="desc"></p>
        <p>Contact Info: <input type="text" name="contact"></p>
+       <p>Description:</p>
+       <textarea name="desc" rows="5" cols="50"></textarea>
        <p>
 	 <input type="submit" value="Submit">
 	 <input type="reset" value="Reset">

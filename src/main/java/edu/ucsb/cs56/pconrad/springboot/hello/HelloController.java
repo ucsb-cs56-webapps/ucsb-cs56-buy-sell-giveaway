@@ -54,4 +54,22 @@ public class HelloController {
 	    //Bad post
 	    return "new_post";
     }
+
+    //To-do Implement github logins so we can have admins to the site and review/approve post.
+    @RequestMapping("/admin_login")
+    public String admin_login(){
+	//Update when implmented
+	return "/";
+    }
+
+    //This will be the page were we do all the verification.
+    @RequestMapping("/admin")
+    public ModelAndView admin(Model model){
+	System.out.println(postings);
+
+	Map<String, Object> params = new HashMap<>();
+	params.put("postings", postings);
+		
+	return new ModelAndView("admin", params);
+    }
 }
