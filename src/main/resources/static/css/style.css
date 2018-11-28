@@ -1,21 +1,35 @@
 .grid-container {
+	margin-left: 10px;
+	width: 600px;
+	background-color: #eee;
+	border-radius: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 1px;
+	padding-bottom: 1px;
 	display: grid;
 	grid-gap: 15px;
 }
 
 /*Title*/
 .grid-item h2 {
+	font-size:200%;
+	font-style: initial;
+	
 
 }
 
 /*Description*/
-* .grid-item h4 {
-
+.grid-item h4 {
+	width: 100%;
+	padding-left: 8px;
 }
 
 /*Contact*/
 .grid-item h3 {
-	color: blue;
+	font-size: small;
+	color: #1E66AD;
+	padding-left: 8px;
 }
 
 .new-post {
@@ -51,5 +65,6 @@
 	margin-right: 20px;
 	margin-top: 15px;
 }
+
 
 
