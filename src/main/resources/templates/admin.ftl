@@ -13,6 +13,7 @@
 					<h2>${posting.title}</h2>
 					<h4>${posting.description}</h4>
 					<h3>${posting.contact}</h3>
+					<div>
 					<p>
 					  <input type="button" value="Approve" onclick="alert('Woah')">
 					  <input type="button" value="Remove" onclick="alert('Nope')">
