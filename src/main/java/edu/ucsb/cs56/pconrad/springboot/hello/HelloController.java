@@ -4,10 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import edu.ucsb.cs56.pconrad.springboot.hello.Posting;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
-
+//yinon was here
 @Controller
 public class HelloController {
 	/*
@@ -16,65 +18,41 @@ public class HelloController {
 		return "index";
 	}
 	*/
-	@RequestMapping("/")
-	public ModelAndView index() {
-		ArrayList<Posting> postings = new ArrayList<Posting>();
+
+   
+    ArrayList<Posting> postings = new ArrayList<Posting>();
+    
+    @RequestMapping("/")
+    public ModelAndView index() {
+	/*ArrayList<Posting> postings = new ArrayList<Posting>();
 		postings.add(new Posting("What a title!", "Great description!", "Number: 555-555-5555\nEmail: fake@email.com"));
 		postings.add(new Posting("What a title 2!", "Great description 2!", "Number: 444-555-5555\nEmail: fake@email.com"));
 		postings.add(new Posting("What a title 3!", "Great description 3!", "Number: 333-555-5555\nEmail: fake@email.com"));
-
+	*/
 		System.out.println(postings);
 
 		Map<String, Object> params = new HashMap<>();
 		params.put("postings", postings);
-
+		
 		return new ModelAndView("index", params);
 	}
 
+    //Info on @RequestParam: http://zetcode.com/springboot/requestparam/
+    @RequestMapping("/new_post")
+    public String new_post_form(Model model, @RequestParam(value="title",required=true,defaultValue="") String title,
+				@RequestParam(value="desc",required=true,defaultValue="") String desc,
+				@RequestParam(value="email",required=true,defaultValue="") String email,
+				@RequestParam(value="number",required=true,defaultValue="") String number){
+	Posting newPost = new Posting(title,desc,email,number);
+	    if(PostVerifier.isValid(newPost)){
+		postings.add(newPost);
+		//Found how to redirect on this article: https://o7planning.org/en/11547/spring-boot-and-freemarker-tutorial
+		return "redirect:/";
+	    }
+	    //Don't know if I need the following line?
+	    //model.addAttribute("new_post", new Posting(title,desc,contact));
 
-	@RequestMapping("/search")
-	public String search() {
-		return "search";
-	}
-
-	@RequestMapping("/sell")
-	public String sell() {
-		return "sell";
-	}
-
-	@RequestMapping("/free")
-	public String free(){
-		return"free";
-	}
-
-	@RequestMapping("/textbook")
-	public String textbook(){
-		return"textbook";
-	}
-
-	@RequestMapping("/recreation")
-	public String recreation(){
-		return "recreation";
-	}
-
-	@RequestMapping("/transportation")
-	public String transportation(){
-		return("transportation");
-	}
-
-	@RequestMapping("/supplies")
-	public String supplies(){
-		return("supplies");
-	}
-
-	@RequestMapping("/all")
-	public String all(){
-		return("all");
-	}
-
-	@RequestMapping("/other")
-	public String other() {
-		return("other");
-	}
-
+	    //Bad post
+	    return "new_post";
+    }
 }
