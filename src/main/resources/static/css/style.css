@@ -1,5 +1,10 @@
 .grid-container {
+	display:grid;
+}
+
+.grid-item{
 	margin-left: 10px;
+	margin-bottom: 10px;
 	width: 600px;
 	background-color: #eee;
 	border-radius: 15px;
@@ -10,7 +15,6 @@
 	display: grid;
 	grid-gap: 15px;
 }
-
 /*Title*/
 .grid-item h2 {
 	font-size:200%;
@@ -65,6 +69,7 @@
 	margin-right: 20px;
 	margin-top: 15px;
 }
+
 
 
 
