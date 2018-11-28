@@ -3,12 +3,16 @@ package edu.ucsb.cs56.pconrad.springboot.hello;
 public class Posting {
 	private String title;
 	private String description;
-	private String contact;
+	private String email;
+	private String number;
+	private int approved;
 
-	public Posting(String title, String description, String contact) {
+	public Posting(String title, String description, String email, String number) {
 		this.title = title;
 		this.description = description;
-		this.contact = contact;
+		this.email = email;
+		this.number = number;
+		this.approved = 0;
 	}
 
 	public String getTitle() {
@@ -19,7 +23,15 @@ public class Posting {
 		return description;
 	}
 
-	public String getContact() {
-		return contact;
+	public String getEmail() {
+		return email;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setApproved() {
+		this.approved = approved;
 	}
 }

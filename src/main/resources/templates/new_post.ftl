@@ -6,17 +6,18 @@
  </head>
  <body>
    <#include "navbar.ftl" />
-   <h1 style = "margin-left: 15px">Make A New Post</h1>
+   <h1>Make A New Post</h1>
    
-   <div style="margin-left: 15px">
+   <div class="new-post">
      <form action="/new_post" method "get ">
-       <p>Title: <input type="text" name="title"></p>
-       <p>Description: <input type="text" name="desc"></p>
-       <p>Contact Info: <input type="text" name="contact"></p>
-       <p>
-	 <input type="submit" value="Submit">
-	 <input type="reset" value="Reset">
-       </p>
+	<p>Title</p><input class="input-field" type="text" name="title">
+	<p>Email</p><input class="input-field" type="text" name="email">
+	<p>Number</p><input class="input-field" type="text" name="number">
+	<p>Description</p><textarea class="input-field"  name="desc" rows="5" cols="33"></textarea>
+	<div class="buttons">
+	 <input class="button" type="submit" value="Submit">
+	 <input class="button" type="reset" value="Reset">
+	</div class="buttons">
      </form>
  </body>
 </html>

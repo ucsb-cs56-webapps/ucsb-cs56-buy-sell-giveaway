@@ -41,8 +41,9 @@ public class HelloController {
     @RequestMapping("/new_post")
     public String new_post_form(Model model, @RequestParam(value="title",required=true,defaultValue="") String title,
 				@RequestParam(value="desc",required=true,defaultValue="") String desc,
-				@RequestParam(value="contact",required=true,defaultValue="") String contact){
-	Posting newPost = new Posting(title,desc,contact);
+				@RequestParam(value="email",required=true,defaultValue="") String email,
+				@RequestParam(value="number",required=true,defaultValue="") String number){
+	Posting newPost = new Posting(title,desc,email,number);
 	    if(PostVerifier.isValid(newPost)){
 		postings.add(newPost);
 		//Found how to redirect on this article: https://o7planning.org/en/11547/spring-boot-and-freemarker-tutorial

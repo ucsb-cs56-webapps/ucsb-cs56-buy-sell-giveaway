@@ -17,8 +17,11 @@ public class PostVerifier{
 	    return false;
 	}
 	//Check contact, currently only checking if empty might, might want more later on
-	else if(post.getContact().isEmpty()){
+	else if(post.getEmail().isEmpty()){
 	    return false;
+	}
+	else if(post.getNumber().isEmpty()) {
+		return false;
 	}
 	return true;
     }

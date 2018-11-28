@@ -13,7 +13,8 @@
 				<div class="grid-item">
 					<h2>${posting.title}</h2>
 					<h4>${posting.description}</h4>
-					<h3>${posting.contact}</h3>
+					<h3>${posting.email}</h3>
+					<h3>${posting.number}</h3>
 				</div>
 			</#list>
 		</table>
