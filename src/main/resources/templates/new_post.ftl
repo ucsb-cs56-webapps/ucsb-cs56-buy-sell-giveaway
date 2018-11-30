@@ -9,7 +9,7 @@
    <h1 style = "margin-left: 15px">Make A New Post</h1>
    
    <div style="margin-left: 15px">
-     <form action="/new_post" method "get ">
+     <form action="/new_post">
        <p>Title: <input type="text" name="title"></p>
        <p>Contact Info: <input type="text" name="contact"></p>
        <p>Description:</p>
