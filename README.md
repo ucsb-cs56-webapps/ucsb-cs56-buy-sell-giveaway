@@ -10,7 +10,7 @@ Description: Users can exchange free items. The two users are givers and getters
 - Juan - juangonzalez20
 - Derek - derektkbang
 
---
+---
 
 ### To deploy to heroku
 ```
