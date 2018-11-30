@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.springframework</groupId>
     <artifactId>gs-spring-boot</artifactId>
     <version>0.1.0</version>
@@ -14,6 +13,11 @@
     </parent>
 
     <dependencies>
+      <dependency>
+	<groupId>org.jacoco</groupId>
+	<artifactId>jacoco-maven-plugin</artifactId>
+	<version>0.8.2</version>
+      </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -21,25 +25,19 @@
 	<dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-freemarker</artifactId>
-
-  </dependency>
-
-
-<dependency>
-  <groupId>junit</groupId>
-  <artifactId>junit</artifactId>
-  <version>4.11</version>
-  <scope>test</scope>
-</dependency>  
-
-	
+	</dependency>
+	<dependency>
+	  <groupId>junit</groupId>
+	  <artifactId>junit</artifactId>
+	  <version>4.11</version>
+	  <scope>test</scope>
+	</dependency>  
         <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
 	<dependency>
 	  <groupId>org.xerial</groupId>
 	  <artifactId>sqlite-jdbc</artifactId>
 	  <version>3.25.2</version>
 	</dependency>
-
     </dependencies>
 
     <properties>
@@ -48,7 +46,36 @@
 
 
     <build>
-        <plugins>
+      <plugins>
+	<plugin>
+	  <groupId>org.jacoco</groupId>
+	  <artifactId>jacoco-maven-plugin</artifactId>
+	  <version>0.8.2</version>
+	  <executions>
+            <execution>
+              <goals>
+		<goal>prepare-agent</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>report</id>
+              <phase>prepare-package</phase>
+              <goals>
+		<goal>report</goal>
+              </goals>
+            </execution>
+	  </executions>
+	</plugin>
+	<plugin>
+	  <groupId>org.apache.maven.plugins</groupId>
+	  <artifactId>maven-site-plugin</artifactId>
+	  <version>3.3</version>
+	</plugin>
+	<plugin>
+	  <groupId>org.apache.maven.plugins</groupId>
+	  <artifactId>maven-project-info-reports-plugin</artifactId>
+	  <version>2.7</version>
+	</plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
