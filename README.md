@@ -12,7 +12,7 @@ Description: Users can exchange free items. The two users are givers and getters
 
 Website: https://cs56-f18-buy-sell-giveaway.herokuapp.com/
 
-To deploy to heroku
+# To deploy to heroku
 ```
 mvn clean
 mvn compile
