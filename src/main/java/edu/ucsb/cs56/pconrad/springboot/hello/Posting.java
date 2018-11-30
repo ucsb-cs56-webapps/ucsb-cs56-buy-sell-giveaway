@@ -3,7 +3,6 @@ package edu.ucsb.cs56.pconrad.springboot.hello;
 public class Posting {
 	private String title;
 	private String description;
-//<<<<<<< HEAD
 	private String contact;
 	private int id;
 	public Posting(String title, String description, String contact) {
@@ -11,7 +10,7 @@ public class Posting {
 		this.description = description;
 		this.contact = contact;
 		this.id=0;
-//======
+	
 	}
 	private String email;
 	private String number;
@@ -23,9 +22,7 @@ public class Posting {
 		this.email = email;
 		this.number = number;
 		this.approved = 0;
-//>>>>>>> 422f3bc8d9bf18ecf8e799571a26e58c7bf27d79
 	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -41,6 +38,7 @@ public class Posting {
 	public String getNumber() {
 		return number;
 	}
+
 	public int getID() {
                 return id;
         }
