@@ -18,4 +18,4 @@ mvn clean
 mvn compile
 mvn package heroku:deploy
 ```
-Website: https://cs56-f18-buy-sell-giveaway.herokuapp.com/
+Website: https://cs56-f18-buy-sell-giveaway.herokuapp.com
