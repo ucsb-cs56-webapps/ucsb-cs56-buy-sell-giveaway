@@ -101,5 +101,13 @@ public class HelloController {
 	return new ModelAndView("admin", params);
     }
 
+    // https://hellokoding.com/spring-boot-hello-world-example-with-freemarker/
+    
+    @GetMapping("/approve")
+    public String approve(Model model, @RequestParam(value="id", defaultValue="") String id) {
+	model.addAttribute("id", id);
+	System.out.println(id);
+	return "/admin?id=" + id + "?approved=1";
+    }
   
 }
