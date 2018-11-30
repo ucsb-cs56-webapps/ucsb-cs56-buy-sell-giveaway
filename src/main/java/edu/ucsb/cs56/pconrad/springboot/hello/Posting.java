@@ -42,4 +42,6 @@ public class Posting {
 	public void setApproved() {
 		this.approved = approved;
 	}
+
+	//Test
 }
