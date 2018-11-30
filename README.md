@@ -15,9 +15,6 @@ Website: https://cs56-f18-buy-sell-giveaway.herokuapp.com/
 To deploy to heroku
 ```
 mvn clean
-
 mvn compile
-
 mvn package heroku:deploy
-
 ```
