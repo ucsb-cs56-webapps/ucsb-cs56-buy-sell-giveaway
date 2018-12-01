@@ -8,30 +8,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ui.Model;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Random;
+
 @Controller
 public class HelloController {
-	/*
-	@RequestMapping("/")
-	public String index() {
-		return "index";
-	}
-	*/
-
    
     ArrayList<Posting> postingsNeedApproval = new ArrayList<Posting>();
     ArrayList<Posting> postingsApproved = new ArrayList<Posting>();
     
     @RequestMapping("/")
     public ModelAndView index() {
-	/*ArrayList<Posting> postings = new ArrayList<Posting>();
-		postings.add(new Posting("What a title!", "Great description!", "Number: 555-555-5555\nEmail: fake@email.com"));
-		postings.add(new Posting("What a title 2!", "Great description 2!", "Number: 444-555-5555\nEmail: fake@email.com"));
-		postings.add(new Posting("What a title 3!", "Great description 3!", "Number: 333-555-5555\nEmail: fake@email.com"));
-	*/
 		System.out.println(postingsApproved);
 
 		Map<String, Object> params = new HashMap<>();
@@ -45,19 +36,24 @@ public class HelloController {
     public String new_post_form(Model model, @RequestParam(value="title",required=true,defaultValue="") String title,
 				@RequestParam(value="desc",required=true,defaultValue="") String desc,
 				@RequestParam(value="contact",required=true,defaultValue="") String contact){
-	Posting newPost = new Posting(title,desc,contact);
+	//Create a posting object for new post
+	//Generate Random Number for ID
+	Random rand = new Random();
+	//Some Range
+	int max = 1000000;
+	int min = 1;
+	//https://stackoverflow.com/questions/363681/how-to-generate-random-integers-within-a-specific-range-in-java	
+	int randomNum = rand.nextInt((max-min)+1)+min;
+	Posting newPost = new Posting(title,desc,contact,randomNum);
+	
 	if(PostVerifier.isValid(newPost)){
 	    postingsNeedApproval.add(newPost);
-	    model.addAttribute("new_post", new Posting(title,desc,contact));
-
-	    ;
-
 	    //Found how to redirect on this article: https://o7planning.org/en/11547/spring-boot-and-freemarker-tutorial
-		return "redirect:/";
-	    }
+	    return "redirect:/";
+	}
 
-	    //Bad post
-	    return "new_post";
+	//Bad post
+	return "new_post";
     }
 
     //To-do Implement github logins so we can have admins to the site and review/approve post.
@@ -67,47 +63,39 @@ public class HelloController {
 	return "/";
     }
 
-    //https://stackoverflow.com/questions/49154565/how-to-call-a-method-with-a-button-in-freemarker-dropwizard
     //http://www.mkyong.com/spring-mvc/spring-mvc-form-handling-example/
     //Deals with approval button on admin 
     //This will be the page were we do all the verification.
     @RequestMapping("/admin")
-    public ModelAndView admin(Model model,@RequestParam(value="index",required=true,defaultValue="")String index){
+    public ModelAndView admin(){
 	System.out.println(postingsNeedApproval);
 
 	Map<String, Object> params = new HashMap<>();
 	params.put("postings", postingsNeedApproval);
-
-	if(!index.isEmpty()){
-	    /*Not working
-	    
-	    //Get IDs
-	    String[] strArray = index.split(",");
-	    int[] intArray = new int[strArray.length];
-	    for(int i = 0; i < strArray.length; i++) {
-		intArray[i] = Integer.parseInt(strArray[i]);
-	    }	    
-	    //Go through IDs and add to approve and remove from needs approval
-	    for(int i = 0; i<intArray.length;i++){
-		postingsApproved.add(postingsNeedApproval.get(intArray[i]));
-		postingsNeedApproval.remove(intArray[i]);
-	    }
-	    */
-	    int tempInt = Integer.parseInt(index);
-	    postingsApproved.add(postingsNeedApproval.get(tempInt));
-	    postingsNeedApproval.remove(tempInt);
-	}
 		
 	return new ModelAndView("admin", params);
     }
 
     // https://hellokoding.com/spring-boot-hello-world-example-with-freemarker/
-    
-    @GetMapping("/approve")
-    public String approve(Model model, @RequestParam(value="id", defaultValue="") String id) {
-	model.addAttribute("id", id);
-	System.out.println(id);
-	return "/admin?id=" + id + "?approved=1";
+    //https://stackoverflow.com/questions/49154565/how-to-call-a-method-with-a-button-in-freemarker-dropwizard
+    //https://spring.io/guides/tutorials/rest/
+
+    //In the FTL file the action has to be action = /approve/${posting.id} to work. Also this value is a string so needs to be parse into int.
+    @GetMapping("/approve/{idString}")
+    public String approve(Model model, @PathVariable String idString) {
+	//idString has a comma we need to deal with before parsing
+	idString=idString.replace(",","");
+	int id = Integer.parseInt(idString);
+	Posting temp;
+	for(int i = 0; i< postingsNeedApproval.size();i++){
+	    temp = postingsNeedApproval.get(i);
+	    if(id == temp.getId()){
+		    postingsApproved.add(temp);
+		    postingsNeedApproval.remove(i);
+		    break;
+	    }
+	}
+	return "admin";
     }
   
 }

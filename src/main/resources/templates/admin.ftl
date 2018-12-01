@@ -23,7 +23,8 @@
 	  <h2>${posting.title}</h2>
 	  <h4>${posting.description}</h4>
 	  <h3>${posting.contact}</h3>
-	  <form method="submit" action="/approve">
+	  <p>${posting.id}<p>
+	  <form method="get" action="/approve/${posting.id}">
 	    <input type="submit" value="Approve">
 	  </form>
 	  
