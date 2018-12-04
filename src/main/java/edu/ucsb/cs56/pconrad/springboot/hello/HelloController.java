@@ -23,19 +23,20 @@ public class HelloController {
     
     @RequestMapping("/")
     public ModelAndView index() {
-		System.out.println(postingsApproved);
+	System.out.println(postingsApproved);
 
-		Map<String, Object> params = new HashMap<>();
-		params.put("postings", postingsApproved);
+	Map<String, Object> params = new HashMap<>();
+	params.put("postings", postingsApproved);
 		
-		return new ModelAndView("index", params);
-	}
+	return new ModelAndView("index", params);
+    }
 
     //Info on @RequestParam: http://zetcode.com/springboot/requestparam/
     @RequestMapping("/new_post")
     public String new_post_form(Model model, @RequestParam(value="title",required=true,defaultValue="") String title,
 				@RequestParam(value="desc",required=true,defaultValue="") String desc,
-				@RequestParam(value="contact",required=true,defaultValue="") String contact){
+				@RequestParam(value="email",required=true,defaultValue="") String email,
+				@RequestParam(value="number",required=true,defaultValue="") String number){
 	//Create a posting object for new post
 	//Generate Random Number for ID
 	Random rand = new Random();
@@ -44,7 +45,7 @@ public class HelloController {
 	int min = 1;
 	//https://stackoverflow.com/questions/363681/how-to-generate-random-integers-within-a-specific-range-in-java	
 	int randomNum = rand.nextInt((max-min)+1)+min;
-	Posting newPost = new Posting(title,desc,contact,randomNum);
+	Posting newPost = new Posting(title,desc,email,number,randomNum);
 	
 	if(PostVerifier.isValid(newPost)){
 	    postingsNeedApproval.add(newPost);
@@ -90,9 +91,9 @@ public class HelloController {
 	for(int i = 0; i< postingsNeedApproval.size();i++){
 	    temp = postingsNeedApproval.get(i);
 	    if(id == temp.getId()){
-		    postingsApproved.add(temp);
-		    postingsNeedApproval.remove(i);
-		    break;
+		postingsApproved.add(temp);
+		postingsNeedApproval.remove(i);
+		break;
 	    }
 	}
 	return "admin";

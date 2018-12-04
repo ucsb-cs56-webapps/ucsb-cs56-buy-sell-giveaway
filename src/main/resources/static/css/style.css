@@ -1,20 +1,74 @@
 .grid-container {
-	display: grid;
-	grid-gap: 15px;
+	display:grid;
 }
 
+.grid-item{
+	margin-left: 10px;
+	margin-bottom: 10px;
+	width: 600px;
+	background-color: #eee;
+	border-radius: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	display: grid;
+}
 /*Title*/
 .grid-item h2 {
-
+	font-size:200%;
+	font-style: initial;
+	border-style: outset;
+	border-radius: 10px;
 }
 
 /*Description*/
-* .grid-item h4 {
-
+.grid-item h4 {
+	width: 100%;
+	padding-left: 15px;
+	line-height: 35px;
 }
 
 /*Contact*/
 .grid-item h3 {
-	color: blue;
+	text-align-last: end;
+	font-size: small;
+	line-height: 8px;
+	color: #1E66AD;
+	padding-left: 15px;
+}
+
+.new-post {
+	margin-left: 15px;
+	width: 650px;
+	background-color: #eee;
+	border-radius: 5px;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 1px;
+	padding-bottom: 8px;
+}
+
+.new-post .input-field {
+	width: 100%;
+	border-style: double;
+	padding: 3px;
+	border-radius: 3px;
+}
+
+.new-post p {
+	color: #333;
+	margin-left: 10px;
+	margin-bottom: 0px;
+	margin-top: 7px;
+}
+
+.new-post .button {
+	border-radius: 5px;
+	background-color:#ff7272;
+	width: 80px;
+	height: 30px;
+	margin-right: 20px;
+	margin-top: 15px;
 }
 
