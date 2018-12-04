@@ -25,7 +25,8 @@ mvn test
 ```
 mvn clean
 mvn compile
-mvn test
+mvn test jacoco:report
+firefox file://'pwd'/target/site/jacoco/index.html
 ```
 
 ----
