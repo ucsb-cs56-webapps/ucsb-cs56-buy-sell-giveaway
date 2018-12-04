@@ -12,6 +12,24 @@ Description: Users can exchange free items. The two users are givers and getters
 
 ---
 
+### To test with mvn
+```
+mvn clean
+mvn compile
+mvn test
+```
+
+---
+
+### To test with Jacoco
+```
+mvn clean
+mvn compile
+mvn test
+```
+
+----
+
 ### To run locally
 ```
 mvn clean
