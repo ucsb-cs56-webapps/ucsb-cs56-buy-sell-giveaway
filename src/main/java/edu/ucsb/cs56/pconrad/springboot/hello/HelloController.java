@@ -99,5 +99,22 @@ public class HelloController {
 	
 	return "redirect:/admin";
     }
+
+     @GetMapping("/remove/{idString}")
+    public String remove(Model model, @PathVariable String idString) {
+	//idString has a comma we need to deal with before parsing
+	idString=idString.replace(",","");
+	int id = Integer.parseInt(idString);
+	Posting temp;
+	for(int i = 0; i< postingsNeedApproval.size();i++){
+	    temp = postingsNeedApproval.get(i);
+	    if(id == temp.getId()){
+		postingsNeedApproval.remove(i);
+		break;
+	    }
+	}
+	
+	return "redirect:/admin";
+    }
   
 }
