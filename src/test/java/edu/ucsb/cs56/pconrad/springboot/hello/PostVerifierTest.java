@@ -10,32 +10,32 @@ public class PostVerifierTest{
 
 @Test
 public void test_isValid1(){
-        Posting p=new Posting("title","description", "", "number");
+    Posting p=new Posting("title","description", "", "number","id");
         assertEquals(false, PostVerifier.isValid(p));
 
 }
 
 @Test
 public void test_isValid2(){
-        Posting p=new Posting("","description", "email", "number");
+    Posting p=new Posting("","description", "email", "number","id");
         assertEquals(false, PostVerifier.isValid(p));
 
 }
 @Test
 public void test_isValid3(){
-        Posting p=new Posting("title","", "email", "number");
+    Posting p=new Posting("title","", "email", "number","id");
         assertEquals(false, PostVerifier.isValid(p));
 
 }
 @Test
 public void test_isValid4(){
-        Posting p=new Posting("title","description", "email", "");
+    Posting p=new Posting("title","description", "email", "","id");
         assertEquals(false, PostVerifier.isValid(p));
 
 }
 @Test
 public void test_isValid5(){
-        Posting p=new Posting("van darkholme","a performance artist", "deepdarkfantasies", "8101919");
+    Posting p=new Posting("van darkholme","a performance artist", "deepdarkfantasies", "8101919","id");
         assertEquals(true, PostVerifier.isValid(p));
 
 }

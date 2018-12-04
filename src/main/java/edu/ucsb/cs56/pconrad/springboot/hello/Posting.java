@@ -7,9 +7,9 @@ public class Posting {
     private String email;
     private String number;
     private int approved;
-    private int id;
+    private String id;
 
-	public Posting(String title, String description, String email, String number, int id) {
+	public Posting(String title, String description, String email, String number, String id) {
 	this.title = title;
 	this.description = description;
 	this.email = email;
@@ -17,6 +17,14 @@ public class Posting {
 	this.approved = 0;
 	this.id = id;
     }
+
+    public Posting(String title, String description, String email, String number) {
+	this.title = title;
+	this.description = description;
+	this.email = email;
+	this.number = number;
+	this.approved = 0;
+    }    
 
     public String getTitle() {
 	return title;
@@ -27,8 +35,11 @@ public class Posting {
     }
 
 
-    public int getId(){
+    public String getId(){
 	return id;
+    }
+    public void setId(String id){
+	this.id = id;
     }
 
 

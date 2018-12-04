@@ -8,10 +8,10 @@ import org.junit.Before;
 
 public class PostingTest{
 @Test
-public void test_getIDandsetID(){
+public void test_getIdandsetId(){
         Posting p=new Posting("biolante","boss of this gym", "markwolff@gmail.com", "8101919");
-	p.setID(153);
-        assertEquals(153, p.getID());
+	p.setId("153");
+        assertEquals("153", p.getId());
 
 }
 }

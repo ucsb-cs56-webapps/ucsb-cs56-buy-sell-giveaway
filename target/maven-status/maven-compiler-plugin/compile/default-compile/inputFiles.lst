@@ -1,5 +1,7 @@
+/cs/student/tsujiokato/cs56/bsg/src/main/java/edu/ucsb/cs56/pconrad/springboot/hello/PostRepository.java
 /cs/student/tsujiokato/cs56/bsg/src/main/java/edu/ucsb/cs56/pconrad/springboot/hello/Application.java
 /cs/student/tsujiokato/cs56/bsg/src/main/java/edu/ucsb/cs56/pconrad/springboot/hello/DBController.java
 /cs/student/tsujiokato/cs56/bsg/src/main/java/edu/ucsb/cs56/pconrad/springboot/hello/Posting.java
 /cs/student/tsujiokato/cs56/bsg/src/main/java/edu/ucsb/cs56/pconrad/springboot/hello/HelloController.java
 /cs/student/tsujiokato/cs56/bsg/src/main/java/edu/ucsb/cs56/pconrad/springboot/hello/PostVerifier.java
+/cs/student/tsujiokato/cs56/bsg/src/main/java/edu/ucsb/cs56/pconrad/springboot/hello/Post.java
