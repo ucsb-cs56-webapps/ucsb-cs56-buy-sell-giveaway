@@ -3,15 +3,8 @@ package edu.ucsb.cs56.pconrad.springboot.hello;
 public class Posting {
 	private String title;
 	private String description;
-	private String contact;
 	private int id;
-	public Posting(String title, String description, String contact) {
-		this.title = title;
-		this.description = description;
-		this.contact = contact;
-		this.id=0;
 	
-	}
 	private String email;
 	private String number;
 	private int approved;
@@ -42,7 +35,9 @@ public class Posting {
 	public int getID() {
                 return id;
         }
-
+	public void setID(int i){
+		this.id=i;
+	}
 	public void setApproved() {
 		this.approved = approved;
 	}
