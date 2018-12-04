@@ -13,9 +13,13 @@ Description: Users can exchange free items. The two users are givers and getters
 ---
 
 ### To run locally
+
+Open the localhost.json, freplace the value of spring.data.mongodb.password "REPLACE_WITH_PASSWORD" with the actual password.
+
 ```
 mvn clean
 mvn compile
+. env.sh
 mvn spring-boot:run
 ```
 
