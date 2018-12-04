@@ -1,25 +1,47 @@
 package edu.ucsb.cs56.pconrad.springboot.hello;
 
 public class Posting {
-	private String title;
-	private String description;
-	private String contact;
 
-	public Posting(String title, String description, String contact) {
-		this.title = title;
-		this.description = description;
-		this.contact = contact;
-	}
+    private String title;
+    private String description;
+    private String email;
+    private String number;
+    private int approved;
+    private int id;
 
-	public String getTitle() {
-		return title;
-	}
+	public Posting(String title, String description, String email, String number, int id) {
+	this.title = title;
+	this.description = description;
+	this.email = email;
+	this.number = number;
+	this.approved = 0;
+	this.id = id;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public String getTitle() {
+	return title;
+    }
 
-	public String getContact() {
-		return contact;
-	}
+    public String getDescription() {
+	return description;
+    }
+
+
+    public int getId(){
+	return id;
+    }
+
+
+    public String getEmail() {
+	return email;
+    }
+
+    public String getNumber() {
+	return number;
+    }
+
+    public void setApproved() {
+	this.approved = approved;
+    }
+
 }
