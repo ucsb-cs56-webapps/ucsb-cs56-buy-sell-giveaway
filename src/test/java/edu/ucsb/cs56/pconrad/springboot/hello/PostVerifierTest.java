@@ -21,4 +21,22 @@ public void test_isValid2(){
         assertEquals(false, PostVerifier.isValid(p));
 
 }
+@Test
+public void test_isValid3(){
+        Posting p=new Posting("title","", "email", "number");
+        assertEquals(false, PostVerifier.isValid(p));
+
+}
+@Test
+public void test_isValid4(){
+        Posting p=new Posting("title","description", "email", "");
+        assertEquals(false, PostVerifier.isValid(p));
+
+}
+@Test
+public void test_isValid5(){
+        Posting p=new Posting("van darkholme","a performance artist", "deepdarkfantasies", "8101919");
+        assertEquals(true, PostVerifier.isValid(p));
+
+}
 }
