@@ -96,7 +96,8 @@ public class HelloController {
 		break;
 	    }
 	}
-	return "admin";
+	
+	return "redirect:/admin";
     }
   
 }

@@ -8,26 +8,19 @@
     <#include "navbar.ftl" />
     <h1>Admin Post Approval Page</h1>
     <div>
-     <!-- <form action = "/admin">
-	<p>Index (0 based) of Post for Approval(Comma seperated):<input type="text" name="index"></p>
-	<p>
-	  <input type="submit" value="Approve">
-	</p>
-      </form>
-     -->
     </div>
     
     <div class="grid-container">
-      <#list postings as posting>
+      <#list postings as posting>	
 	<div class="grid-item">
 	  <h2>${posting.title}</h2>
+	  <h3>${posting.email}</h3>
+	  <h3>${posting.number}</h3>
 	  <h4>${posting.description}</h4>
-	  <h3>${posting.contact}</h3>
-	  <p>${posting.id}<p>
+	  <h3>${posting.id}</h3>	  
 	  <form method="get" action="/approve/${posting.id}">
 	    <input type="submit" value="Approve">
 	  </form>
-	  
 	</div>
       </#list>
   </body>

@@ -26,9 +26,6 @@ public class Posting {
 	return description;
     }
 
-    public String getContact() {
-	return contact;
-    }
 
     public int getId(){
 	return id;
