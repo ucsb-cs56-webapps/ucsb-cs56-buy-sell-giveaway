@@ -5,10 +5,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import edu.ucsb.cs56.pconrad.springboot.hello.Posting;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.ui.Model;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -17,50 +22,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Criteria;
 
-<<<<<<< HEAD
-//yinon was here
 @Controller
 public class HelloController {
-	/*
-	@RequestMapping("/")
-	public String index() {
-		return "index";
-	}
-	*/
-=======
-@Controller
-public class HelloController {
->>>>>>> fd8513b7879d0a7e0724ef46d0c138fbeb150148
 
 	@Autowired
 	private PostRepository repository;
 
-<<<<<<< HEAD
-    ArrayList<Posting> postings = new ArrayList<Posting>();
-	ArrayList<Post> tmpPostList = new ArrayList<Post>();
-
-    @RequestMapping("/")
-    public ModelAndView index() {
-	/*ArrayList<Posting> postings = new ArrayList<Posting>();
-		postings.add(new Posting("What a title!", "Great description!", "Number: 555-555-5555\nEmail: fake@email.com"));
-		postings.add(new Posting("What a title 2!", "Great description 2!", "Number: 444-555-5555\nEmail: fake@email.com"));
-		postings.add(new Posting("What a title 3!", "Great description 3!", "Number: 333-555-5555\nEmail: fake@email.com"));
-	*/
-		postings.clear();
-		tmpPostList = repository.findAll();
-
-		for(Post p : tmpPostList){
-		    postings.add(new Posting(p.getTitle(),p.getDescription(),p.getEmail(),p.getPhone(),p.getId()));
-		}
-
-		System.out.println(postings);
-
-		Map<String, Object> params = new HashMap<>();
-		params.put("postings", postings);
-
-		return new ModelAndView("index", params);
-	}
-=======
     ArrayList<Posting> postingsNeedApproval = new ArrayList<Posting>();
     ArrayList<Posting> postingsApproved = new ArrayList<Posting>();
 
@@ -83,7 +50,6 @@ public class HelloController {
 
 	return new ModelAndView("index", params);
     }
->>>>>>> fd8513b7879d0a7e0724ef46d0c138fbeb150148
 
     //Info on @RequestParam: http://zetcode.com/springboot/requestparam/
     @RequestMapping("/new_post")
@@ -91,21 +57,6 @@ public class HelloController {
 				@RequestParam(value="desc",required=true,defaultValue="") String desc,
 				@RequestParam(value="email",required=true,defaultValue="") String email,
 				@RequestParam(value="number",required=true,defaultValue="") String number){
-<<<<<<< HEAD
-	Posting newPost = new Posting(title,desc,email,number,id);
-	    if(PostVerifier.isValid(newPost)){
-		//postings.add(newPost);
-		repository.save(new Post(title,desc,email,number,"0"));
-		//Found how to redirect on this article: https://o7planning.org/en/11547/spring-boot-and-freemarker-tutorial
-		return "redirect:/";
-	    }
-	    //Don't know if I need the following line?
-	    //model.addAttribute("new_post", new Posting(title,desc,contact));
-
-	    //Bad post
-	    return "new_post";
-    }
-=======
 	//Create a posting object for new post
 	//Generate Random Number for ID
 	//Random rand = new Random();
@@ -180,7 +131,6 @@ public class HelloController {
 			postingsNeedApproval.remove(i);
 			break;
 		    }
-
 		}
 	*/
 
@@ -230,5 +180,4 @@ public class HelloController {
 		}
 	}
 
->>>>>>> fd8513b7879d0a7e0724ef46d0c138fbeb150148
 }
