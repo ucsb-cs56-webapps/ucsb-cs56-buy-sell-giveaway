@@ -68,7 +68,7 @@ mvn spring-boot:run
 
 ### To deploy to heroku
 
-To deploy on heroku, edit the heroku.json file with all of your information, similar to the 2 steps above. Follow this tutorial: https://github.com/ucsb-cs56-pconrad/spring-boot-github-oauth-demo02#running-on-heroku
+To deploy on heroku, copy the heroku.json.SAMPLE to heroku.json and fill with all of your information, similar to the 2 steps above. Follow this tutorial: https://github.com/ucsb-cs56-pconrad/spring-boot-github-oauth-demo02#running-on-heroku
 
 Be sure to also edit the heroku.json file with your database information in step 4 of the tutorial link.
 
