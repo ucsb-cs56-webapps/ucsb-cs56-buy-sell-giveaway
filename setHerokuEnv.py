@@ -17,4 +17,4 @@ for a in sys.argv[1:]:
 for k in vars.keys():
     command = "heroku config:set " + k + "=" + vars[k] + addl_args;
     print("executing: " + command);
-os.system(command);
+    os.system(command);
