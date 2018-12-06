@@ -10,7 +10,7 @@
     
 
     <div class="new-post">
-      <form action="/new_post" method "get ">
+      <form action="/protected/new_post" method "get ">
 	<p>Title</p><input class="input-field" type="text" name="title">
 	<p>Email</p><input class="input-field" type="text" name="email">
 	<p>Number</p><input class="input-field" type="text" name="number">

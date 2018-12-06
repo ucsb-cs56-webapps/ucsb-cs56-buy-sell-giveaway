@@ -22,8 +22,68 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Criteria;
 
+//oauth imports
+import java.util.List;
+import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import org.pac4j.core.client.Client;
+import org.pac4j.core.config.Config;
+import org.pac4j.core.context.J2EContext;
+import org.pac4j.core.context.Pac4jConstants;
+import org.pac4j.core.context.session.SessionStore;
+import org.pac4j.core.exception.HttpAction;
+import org.pac4j.core.profile.CommonProfile;
+import org.pac4j.http.client.indirect.FormClient;
+import org.pac4j.springframework.annotation.ui.RequireAnyRole;
+import org.pac4j.springframework.helper.UISecurityHelper;
+import org.pac4j.springframework.web.LogoutController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Controller
 public class HelloController {
+
+    @Value("${pac4j.centralLogout.defaultUrl:#{null}}")
+    private String defaultUrl;
+
+    @Value("${pac4j.centralLogout.logoutUrlPattern:#{null}}")
+    private String logoutUrlPattern;
+
+    @Autowired
+    private Config config;
+
+    @Autowired
+    private HttpServletRequest request;
+
+    @Autowired
+    private HttpServletResponse response;
+
+    @Autowired
+    private UISecurityHelper uiSecurityHelper;
+
+    private LogoutController logoutController;
+
+    @PostConstruct
+    protected void afterPropertiesSet() {
+        logoutController = new LogoutController();
+        logoutController.setDefaultUrl(defaultUrl);
+        logoutController.setLogoutUrlPattern(logoutUrlPattern);
+        logoutController.setLocalLogout(false);
+        logoutController.setCentralLogout(true);
+        logoutController.setConfig(config);
+        logoutController.setDestroySession(false);
+}
+
+@ExceptionHandler(HttpAction.class)
+    public void httpAction() {
+        // do nothing
+    }
 
 	@Autowired
 	private PostRepository repository;
@@ -52,7 +112,7 @@ public class HelloController {
     }
 
     //Info on @RequestParam: http://zetcode.com/springboot/requestparam/
-    @RequestMapping("/new_post")
+    @RequestMapping("/protected/new_post")
     public String new_post_form(Model model, @RequestParam(value="title",required=true,defaultValue="") String title,
 				@RequestParam(value="desc",required=true,defaultValue="") String desc,
 				@RequestParam(value="email",required=true,defaultValue="") String email,
@@ -88,7 +148,7 @@ public class HelloController {
     //http://www.mkyong.com/spring-mvc/spring-mvc-form-handling-example/
     //Deals with approval button on admin
     //This will be the page were we do all the verification.
-    @RequestMapping("/admin")
+    @RequestMapping("/admin/verify")
     public ModelAndView admin(){
 
 		postingsNeedApproval.clear();
@@ -135,7 +195,7 @@ public class HelloController {
 		}
 	*/
 
-	return "redirect:/admin";
+	return "redirect:/admin/verify";
     }
 
      @GetMapping("/remove/{idString}")
@@ -160,7 +220,7 @@ public class HelloController {
 	}
 	*/
 
-	return "redirect:/admin";
+	return "redirect:/admin/verify";
     }
 
 	public void updateApprovedList(){
