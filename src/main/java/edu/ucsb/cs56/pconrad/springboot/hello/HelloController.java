@@ -117,18 +117,9 @@ public class HelloController {
 				@RequestParam(value="desc",required=true,defaultValue="") String desc,
 				@RequestParam(value="email",required=true,defaultValue="") String email,
 				@RequestParam(value="number",required=true,defaultValue="") String number){
-	//Create a posting object for new post
-	//Generate Random Number for ID
-	//Random rand = new Random();
-	//Some Range
-	//int max = 1000000;
-	//int min = 1;
-	//https://stackoverflow.com/questions/363681/how-to-generate-random-integers-within-a-specific-range-in-java
-	//int randomNum = rand.nextInt((max-min)+1)+min;
 	Posting newPost = new Posting(title,desc,email,number,"0");
 
 	if(PostVerifier.isValid(newPost)){
-	    //postingsNeedApproval.add(newPost);
 		repository.save(new Post(title,desc,email,number,"0"));
 	    //Found how to redirect on this article: https://o7planning.org/en/11547/spring-boot-and-freemarker-tutorial
 	    return "redirect:/";
@@ -182,18 +173,6 @@ public class HelloController {
 
 		updateNonApprovedList();
 		updateApprovedList();
-		/*
-		Posting temp;
-		for(int i = 0; i< postingsNeedApproval.size();i++){
-		    temp = postingsNeedApproval.get(i);
-		    if(id == temp.getId()){
-			postingsApproved.add(temp);
-			postingsNeedApproval.remove(i);
-			break;
-		    }
-		}
-	*/
-
 	return "redirect:/admin/verify";
     }
 
@@ -201,23 +180,11 @@ public class HelloController {
     public String remove(Model model, @PathVariable String idString) {
 	//idString has a comma we need to deal with before parsing
 	idString=idString.replace(",","");
-	//int id = Integer.parseInt(idString);
-	//Posting temp;
 	Post temp = repository.findOneById(idString);
 	repository.delete(temp);
 
 	updateNonApprovedList();
 	updateApprovedList();
-
-	/*
-	for(int i = 0; i< postingsNeedApproval.size();i++){
-	    temp = postingsNeedApproval.get(i);
-	    if(id == temp.getId()){
-		postingsNeedApproval.remove(i);
-		break;
-	    }
-	}
-	*/
 
 	return "redirect:/admin/verify";
     }
