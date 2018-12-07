@@ -12,6 +12,25 @@ Description: Users can exchange free items. The two users are givers and getters
 
 ---
 
+### To test with mvn
+```
+mvn clean
+mvn compile
+mvn test
+```
+
+---
+
+### To test with Jacoco
+```
+mvn clean
+mvn compile
+mvn test jacoco:report
+firefox file://`pwd`/target/site/jacoco/index.html
+```
+
+----
+
 ### To run locally
 
 ### Setting up your database
@@ -63,6 +82,7 @@ mvn compile
 . env.sh
 mvn spring-boot:run
 ```
+=======
 
 ---
 

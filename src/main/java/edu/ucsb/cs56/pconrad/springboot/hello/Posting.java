@@ -18,6 +18,14 @@ public class Posting {
 	this.id = id;
     }
 
+    public Posting(String title, String description, String email, String number) {
+	this.title = title;
+	this.description = description;
+	this.email = email;
+	this.number = number;
+	this.approved = 0;
+    }    
+
     public String getTitle() {
 	return title;
     }
@@ -29,6 +37,9 @@ public class Posting {
 
     public String getId(){
 	return id;
+    }
+    public void setId(String id){
+	this.id = id;
     }
 
 

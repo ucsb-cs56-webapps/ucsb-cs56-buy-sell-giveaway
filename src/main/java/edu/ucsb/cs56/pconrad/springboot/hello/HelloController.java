@@ -191,7 +191,6 @@ public class HelloController {
 			postingsNeedApproval.remove(i);
 			break;
 		    }
-
 		}
 	*/
 
