@@ -1,8 +1,8 @@
 ###F18 Final Remarks
 
-Test
-- Google "Testing mongoDB repo using Spring" for testing DB repo"
-- other testing
+-Test
+-- Google "Testing mongoDB repo using Spring" for testing DB repo"
+-- other testing
 Detail View
 Prices
 Images
